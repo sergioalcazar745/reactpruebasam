@@ -10,6 +10,7 @@ export default class Padre extends Component {
 
     state = {
         especialiades: [],
+        especialidad: "",
         status: false,
         contador: 0
     }
@@ -20,6 +21,7 @@ export default class Padre extends Component {
         console.log(request)
         axios.put(request).then(response => {
             this.setState({
+                especialidad: this.selectespecialidad.current.value,
                 contador: this.state.contador + 1
             })
         })
@@ -58,7 +60,9 @@ export default class Padre extends Component {
                     <input type={"text"} ref={this.incremento}/><br/>
                     <button>Incrementar salarios</button>
                 </form>
-                <Hijo contador={this.state.contador}/>                
+                {
+                    <Hijo contador={this.state.contador} especialidad={this.state.especialidad}/>
+                }                                
             </div>
         )
     }

@@ -10,7 +10,7 @@ export default class Hijo extends Component {
     }
 
     loadDoctores = () => {
-        var request = Global.url + "api/Doctores";
+        var request = Global.url + "/api/Doctores/DoctoresEspecialidad/" + this.props.especialidad;
         axios.get(request).then(response => {
             this.setState({
                 doctores: response.data,
@@ -20,8 +20,9 @@ export default class Hijo extends Component {
     }
 
     componentDidMount = () => {
-        console.log("Inicia")
-        this.loadDoctores();
+        if(this.props.especialidad != ""){
+            this.loadDoctores();
+        }
     }
 
     componentDidUpdate = (oldProps) => {
@@ -34,6 +35,8 @@ export default class Hijo extends Component {
     render() {
         return (
             <div>
+                {
+                this.props.especialidad != "" &&
                 <table border="1">
                     <thead>
                         <tr>
@@ -57,6 +60,7 @@ export default class Hijo extends Component {
                         }
                     </tbody>
                 </table>
+                }
             </div>
         )
     }
