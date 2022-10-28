@@ -58,9 +58,7 @@ export default class Padre extends Component {
                     <input type={"text"} ref={this.incremento}/><br/>
                     <button>Incrementar salarios</button>
                 </form>
-                {
-                    <Hijo contador={this.state.contador}/>
-                }                
+                <Hijo contador={this.state.contador}/>                
             </div>
         )
     }
